@@ -10,7 +10,11 @@ cmake_minimum_required(VERSION 3.4.1)
 # You can define multiple libraries, and CMake builds them for you.
 # Gradle automatically packages shared libraries with your APK.
 
-set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/jniLibs)
+set(nativeSourceDir ${PROJECT_SOURCE_DIR}/src/main/cpp/)
+
+#set(meshSourceDir ${PROJECT_SOURCE_DIR}/src/main/jniLibs/)
+
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/out/jniLibs/${ANDROID_ABI})
 
 add_library( # Sets the name of the library.
         native-lib
@@ -19,7 +23,7 @@ add_library( # Sets the name of the library.
         SHARED
 
         # Provides a relative path to your source file(s).
-        native-lib.cpp
+        ${nativeSourceDir}/native-lib.cpp
         )
 
 # Searches for a specified prebuilt library and stores the path as a
